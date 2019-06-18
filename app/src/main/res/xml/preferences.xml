@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="query"
+        android:title="@string/settings_query_title"
+        android:summary="@string/settings_query_summary"
+        android:defaultValue="landscape"
+        android:inputType="text"/>
+
+    <SwitchPreference
+        android:key="geolocated"
+        android:title="@string/settings_geolocated_title"
+        android:summary="@string/settings_geolocated_summary"
+        android:defaultValue="false"/>
+
+    <EditTextPreference
+        android:key="batch_size"
+        android:title="@string/settings_batch_size_title"
+        android:summary="@string/settings_batch_size_summary"
+        android:defaultValue="5"
+        android:inputType="number"/>
+
+</PreferenceScreen>
