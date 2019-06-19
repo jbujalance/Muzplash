@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 
-class MuzplashSettingsImpl(val preferences: SharedPreferences): MuzplashSettings {
+class MuzplashSettingsImpl(private val preferences: SharedPreferences) : MuzplashSettings {
 
     constructor(context: Context): this(PreferenceManager.getDefaultSharedPreferences(context))
 
@@ -13,7 +13,7 @@ class MuzplashSettingsImpl(val preferences: SharedPreferences): MuzplashSettings
         private const val SETTINGS_DEFAULT_QUERY = "landscape"
         private const val SETTINGS_KEY_GEOLOCATED = "geolocated"
         private const val SETTINGS_KEY_BATCH_SIZE = "batch_size"
-        private const val SETTINGS_DEFAULT_BATCH_SIZE = 5
+        private const val SETTINGS_DEFAULT_BATCH_SIZE = "5"
     }
 
     override fun getSearchQuery(): String {
@@ -25,6 +25,8 @@ class MuzplashSettingsImpl(val preferences: SharedPreferences): MuzplashSettings
     }
 
     override fun getLoadBatchSize(): Int {
-        return preferences.getInt(SETTINGS_KEY_BATCH_SIZE, SETTINGS_DEFAULT_BATCH_SIZE)
+        // TODO EditTextPreference sucks. I need to create a custom NumberPickerPreference extending DialogPreference
+        val string = preferences.getString(SETTINGS_KEY_BATCH_SIZE, SETTINGS_DEFAULT_BATCH_SIZE)!!  // Not null by definition
+        return Integer.valueOf(string)
     }
 }

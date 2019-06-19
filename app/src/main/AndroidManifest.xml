@@ -16,11 +16,8 @@
 
         <activity
             android:name=".ui.settings.SettingsActivity"
-            android:label="@string/activity_settings_title">
-            <intent-filter >
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="@string/activity_settings_title"
+            android:exported="true">
         </activity>
 
         <provider
@@ -33,6 +30,9 @@
             <intent-filter>
                 <action android:name="com.google.android.apps.muzei.api.MuzeiArtProvider" />
             </intent-filter>
+            <meta-data
+                android:name="settingsActivity"
+                android:value="io.github.muzplash.ui.settings.SettingsActivity" />
         </provider>
     </application>
 
