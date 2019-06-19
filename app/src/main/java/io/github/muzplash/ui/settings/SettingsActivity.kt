@@ -1,8 +1,9 @@
-package io.github.muzplash
+package io.github.muzplash.ui.settings
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
+import io.github.muzplash.R
 
 class SettingsActivity : AppCompatActivity() {
 
