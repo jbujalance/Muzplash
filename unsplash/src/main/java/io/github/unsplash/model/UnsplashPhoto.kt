@@ -3,7 +3,7 @@ package io.github.unsplash.model
 data class UnsplashPhoto(
         val id: String,
         val description: String?,
-        val alt_description: String,
+        val alt_description: String?,
         val location: UnsplashPhotoLocation?,
         val urls: UnsplashPhotoUrls,
         val links: UnsplashPhotoLinks,
@@ -13,7 +13,7 @@ data class UnsplashPhoto(
     companion object {
         const val DESCRIPTION_MAX_LENGHT = 80
     }
-    
+
     fun isGeolocated(): Boolean {
         return location != null
     }
