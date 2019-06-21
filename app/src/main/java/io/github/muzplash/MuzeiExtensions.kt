@@ -8,10 +8,10 @@ fun UnsplashPhoto.toArtwork(): Artwork {
     val photo = this
     return Artwork().apply {
         token = photo.id
-        title = photo.description
-        byline = photo.location?.formatted()
+        title = photo.getDescriptionSummary() ?: photo.alt_description
+        byline = photo.location?.title
         attribution = photo.user.name
-        persistentUri = photo.urls.regular.toUri()
+        persistentUri = photo.urls.full.toUri()
         webUri = photo.links.html.toUri()
     }
 }
