@@ -7,4 +7,8 @@ data class UnsplashPhoto(
         val urls: UnsplashPhotoUrls,
         val links: UnsplashPhotoLinks,
         val user: UnsplashUser
-)
+) {
+    fun isGeolocated(): Boolean {
+        return location != null
+    }
+}

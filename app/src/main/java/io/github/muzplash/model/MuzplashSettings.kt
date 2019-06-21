@@ -7,4 +7,8 @@ interface MuzplashSettings {
     fun isGeolocatedFiltered(): Boolean
 
     fun getLoadBatchSize(): Int
+
+    fun getLoadBatchSizeForGeolocationFiltering(): Int {
+        return getLoadBatchSize() * 2
+    }
 }
