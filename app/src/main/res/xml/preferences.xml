@@ -8,6 +8,7 @@
         android:summary="@string/settings_query_summary"
         android:defaultValue="nature wallpaper"
         android:inputType="text"
+        app:useSimpleSummaryProvider="true"
         app:iconSpaceReserved="false"/>
 
     <SwitchPreference
@@ -25,5 +26,14 @@
         android:inputType="number"
         android:digits="0123456789"
         app:iconSpaceReserved="false"/>
+
+    <io.github.muzplash.ui.settings.NumberPickerPreference
+        android:key="test"
+        android:title="test"
+        android:summary="test"
+        android:defaultValue="true"
+        app:iconSpaceReserved="false"
+        app:minValue="1"
+        app:maxValue="6"/>
 
 </androidx.preference.PreferenceScreen>
