@@ -6,7 +6,7 @@
         android:key="query"
         android:title="@string/settings_query_title"
         android:summary="@string/settings_query_summary"
-        android:defaultValue="landscape"
+        android:defaultValue="nature wallpaper"
         android:inputType="text"
         app:iconSpaceReserved="false"/>
 
@@ -21,7 +21,7 @@
         android:key="batch_size"
         android:title="@string/settings_batch_size_title"
         android:summary="@string/settings_batch_size_summary"
-        android:defaultValue="5"
+        android:defaultValue="3"
         android:inputType="number"
         android:digits="0123456789"
         app:iconSpaceReserved="false"/>

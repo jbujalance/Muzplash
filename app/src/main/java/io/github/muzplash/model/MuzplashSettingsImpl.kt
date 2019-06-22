@@ -10,10 +10,10 @@ class MuzplashSettingsImpl(private val preferences: SharedPreferences) : Muzplas
 
     companion object {
         private const val SETTINGS_KEY_QUERY = "query"
-        private const val SETTINGS_DEFAULT_QUERY = "landscape"
+        private const val SETTINGS_DEFAULT_QUERY = "nature wallpaper"
         private const val SETTINGS_KEY_GEOLOCATED = "geolocated"
         private const val SETTINGS_KEY_BATCH_SIZE = "batch_size"
-        private const val SETTINGS_DEFAULT_BATCH_SIZE = "5"
+        private const val SETTINGS_DEFAULT_BATCH_SIZE = "3"
     }
 
     override fun getSearchQuery(): String {
