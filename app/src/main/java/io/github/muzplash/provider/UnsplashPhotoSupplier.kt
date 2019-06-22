@@ -23,7 +23,7 @@ class UnsplashPhotoSupplier(private val settings: MuzplashSettings, private val 
                     .limit(settings.getLoadBatchSize().toLong())
                     .collect(Collectors.toList())
         }
-        // TODO catch service exceptions
+        // TODO catch service exceptions ? Maybe not, as this code runs in a Worker, so kind of useless
         return unsplashService.getRandomPhotos(settings.getSearchQuery(), settings.getLoadBatchSize())
     }
 
