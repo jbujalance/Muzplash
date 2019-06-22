@@ -17,6 +17,7 @@
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:label="@string/activity_settings_title"
+            android:screenOrientation="portrait"
             android:exported="true">
         </activity>
 
