@@ -2,7 +2,7 @@
     <string name="app_name">Muzplash</string>
     <string name="provider_name">Muzplash</string>
     <string name="provider_description">High quality images from Unsplash</string>
-    <string name="provider_command_gmaps">Open location in GMaps</string>
+    <string name="provider_command_gmaps">Open location</string>
     <string name="settings_query_title">Search images</string>
     <string name="settings_query_summary">The provided images will match the given query. For example \"landscape\".</string>
     <string name="settings_geolocated_title">Geolocated photos</string>
