@@ -6,6 +6,12 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-jackson:$retrofit_version"
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9"
+    implementation ("com.github.joschi.jackson:jackson-datatype-threetenbp:2.8.4") {
+        exclude group: "org.threeten", module: "threetenbp"
+    }
+    // Java 8 Time APIs are only available from API level 26
+    // This is a backport of the java.time API to Java 7 and 6
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 

@@ -1,9 +1,17 @@
 package io.github.unsplash.model
 
+import com.fasterxml.jackson.annotation.JsonProperty
+import org.threeten.bp.ZonedDateTime
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.format.FormatStyle
+
 data class UnsplashPhoto(
         val id: String,
+        @JsonProperty("created_at")
+        val creationDate: ZonedDateTime?,
         val description: String?,
-        val alt_description: String?,
+        @JsonProperty("altDescription")
+        val altDescription: String?,
         val location: UnsplashPhotoLocation?,
         val urls: UnsplashPhotoUrls,
         val links: UnsplashPhotoLinks,
@@ -32,5 +40,12 @@ data class UnsplashPhoto(
      */
     fun getDefaultDescription(): String {
         return DEFAULT_DESCRIPTION
+    }
+
+    /**
+     * @return The formatted creation date. The date is formatted depending in the JVMs default locale
+     */
+    fun getFormattedCreationDate(): String? {
+        return creationDate?.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG))
     }
 }

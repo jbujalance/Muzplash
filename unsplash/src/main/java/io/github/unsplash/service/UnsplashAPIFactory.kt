@@ -2,6 +2,7 @@ package io.github.unsplash.service
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.datatype.threetenbp.ThreeTenModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -17,6 +18,7 @@ object UnsplashAPIFactory {
 
     fun getObjectMapper(): ObjectMapper {
         return jacksonObjectMapper()
+                .registerModule(ThreeTenModule())
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
     }
 
