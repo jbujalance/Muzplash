@@ -10,7 +10,7 @@ data class UnsplashPhoto(
         @JsonProperty("created_at")
         val creationDate: ZonedDateTime?,
         val description: String?,
-        @JsonProperty("altDescription")
+        @JsonProperty("alt_description")
         val altDescription: String?,
         val location: UnsplashPhotoLocation?,
         val urls: UnsplashPhotoUrls,
