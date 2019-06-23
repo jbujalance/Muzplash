@@ -13,7 +13,7 @@ fun UnsplashPhoto.toArtwork(): Artwork {
         byline = photo.location?.title ?: photo.getFormattedCreationDate()
         attribution = photo.user.getAttribution()
         persistentUri = photo.urls.full.toUri()
-        webUri = photo.links.getUtmHtml("io.github.muzplash").toUri()
+        webUri = photo.links.getUtmHtml("Muzplash").toUri()
         metadata = photo.location?.getGMapsUriString()
     }
 }
