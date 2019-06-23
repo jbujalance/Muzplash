@@ -1,0 +1,25 @@
+# Muzplash - Unsplash plugin for Muzei
+
+<div>
+    <img src="app/src/main/ic_launcher-web.png" width="120" alt="muzplash_icon">
+</div>
+
+_Muzplash_ is a plugin for the Android live wallpaper app [Muzei](http://get.muzei.co/), by [Roman Nurik](https://github.com/romannurik) and [Ian Lake](https://github.com/ianhanniballake).<br>
+_Muzplash_ provides images from [Unsplash](https://unsplash.com/), the popular photographs community.
+
+## Features
+* Implements the new Muzei 3 API.
+* Choose the theme of the images to provide. Landscapes, cityscapes, cars or cats, whatever you choose to get.
+* Filter out non-geolocated images. Because sometimes it is frustrating to miss the location of that beautiful landscape.
+* Get the author, description and location of the image in Muzei, and access the full details in Unsplash in just one click.
+* Open the image location in Google Maps within Muzei.
+* Choose how many images to load everytime Muzei asks for new pictures. Thus, even if you temporarily don't have internet access, Muzei will probably have a set of unseen images in cache.
+* The authors are attributed and their images download statistics are incremented.
+
+## Screenshots
+<div>
+    <img src="art/Screenshot_20190619-080340.png" width="280" alt="screenshot_1">
+    <img src="art/Screenshot_20190622-002528.png" width="280" alt="screenshot_3">
+    <img src="art/Screenshot_20190622-154701.png" width="280" alt="screenshot_2">
+    <img src="art/Screenshot_20190623-203359.png" width="280" alt="screenshot_4">
+</div>
