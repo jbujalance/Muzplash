@@ -7,4 +7,9 @@ data class UnsplashUser(
         val bio: String?,
         val location: String?,
         val links: UnsplashUserLinks
-)
+) {
+
+    fun getAttribution(): String {
+        return "Photo by $name on Unsplash"
+    }
+}

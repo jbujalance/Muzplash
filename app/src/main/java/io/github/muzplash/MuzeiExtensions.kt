@@ -11,9 +11,9 @@ fun UnsplashPhoto.toArtwork(): Artwork {
         token = photo.id
         title = photo.getDescriptionSummary() ?: photo.altDescription ?: photo.getDefaultDescription()
         byline = photo.location?.title ?: photo.getFormattedCreationDate()
-        attribution = photo.user.name
+        attribution = photo.user.getAttribution()
         persistentUri = photo.urls.full.toUri()
-        webUri = photo.links.html.toUri()
+        webUri = photo.links.getUtmHtml("io.github.muzplash").toUri()
         metadata = photo.location?.getGMapsUriString()
     }
 }
