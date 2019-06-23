@@ -12,7 +12,7 @@ data class UnsplashPhotoLocation(
     fun getGMapsUriString(): String {
         var uriString = "geo:"
         uriString += position?.toString() ?: "0,0"
-        if (title != null) uriString += URLEncoder.encode(title, StandardCharsets.UTF_8.toString())
+        if (title != null) uriString += "?q=" + URLEncoder.encode(title, StandardCharsets.UTF_8.toString())
         return uriString
     }
 }

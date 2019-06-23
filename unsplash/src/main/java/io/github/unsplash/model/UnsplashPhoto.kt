@@ -11,15 +11,26 @@ data class UnsplashPhoto(
 ) {
 
     companion object {
-        const val DESCRIPTION_MAX_LENGHT = 80
+        private const val DESCRIPTION_MAX_LENGHT = 80
+        private const val DEFAULT_DESCRIPTION = "Image from Unsplash"
     }
 
     fun isGeolocated(): Boolean {
         return location != null
     }
 
+    /**
+     * @return A trunkated description of the image
+     */
     fun getDescriptionSummary(): String? {
         if (description == null) return null
         return if (description.length <= DESCRIPTION_MAX_LENGHT) description else description.substring(0, DESCRIPTION_MAX_LENGHT).plus("...")
+    }
+
+    /**
+     * @return A default description of the image, to use in case the image description of the alternative description are not available
+     */
+    fun getDefaultDescription(): String {
+        return DEFAULT_DESCRIPTION
     }
 }
