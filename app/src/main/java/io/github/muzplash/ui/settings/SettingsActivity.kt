@@ -18,6 +18,11 @@ class SettingsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.preferences, rootKey)
@@ -29,7 +34,7 @@ class SettingsActivity : AppCompatActivity() {
             } else {
                 val pickerFragment = NumberPickerPreference.NumberPickerPreferenceFragment.newInstance(preference)
                 pickerFragment.setTargetFragment(this, 0)
-                pickerFragment.show(fragmentManager!!, "todo")
+                pickerFragment.show(fragmentManager!!, javaClass.simpleName)
             }
         }
     }
