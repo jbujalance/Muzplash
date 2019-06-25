@@ -1,6 +1,7 @@
 package io.github.muzplash.provider
 
 import android.content.Context
+import io.github.muzplash.BuildConfig
 import io.github.muzplash.model.MuzplashSettings
 import io.github.muzplash.model.MuzplashSettingsImpl
 import io.github.unsplash.model.UnsplashPhoto
@@ -14,7 +15,9 @@ class UnsplashPhotoSupplier(private val settings: MuzplashSettings, private val 
 
     constructor(context: Context, unsplashService: UnsplashService): this(MuzplashSettingsImpl(context), unsplashService)
 
-    constructor(context: Context): this(context, UnsplashServiceImpl())
+    constructor(context: Context, unsplashAccessKey: String): this(context, UnsplashServiceImpl(unsplashAccessKey))
+
+    constructor(context: Context): this(context, BuildConfig.UNSPLASH_ACCESS_KEY)
 
     override fun get(): Collection<UnsplashPhoto> {
         if (settings.isGeolocatedFiltered()) {

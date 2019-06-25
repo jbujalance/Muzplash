@@ -12,8 +12,10 @@ import java.util.concurrent.TimeUnit
 
 object UnsplashAPIFactory {
 
-    fun createUnsplashAPI(): UnsplashAPI {
-        return createRetrofitBuilder().create(UnsplashAPI::class.java)
+    private const val UNSPLASH_BASE_URL = "https://api.unsplash.com/"
+
+    fun createUnsplashAPI(accessKey: String): UnsplashAPI {
+        return createRetrofitBuilder(accessKey).create(UnsplashAPI::class.java)
     }
 
     fun getObjectMapper(): ObjectMapper {
@@ -22,27 +24,27 @@ object UnsplashAPIFactory {
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
     }
 
-    private fun createRetrofitBuilder(): Retrofit {
+    private fun createRetrofitBuilder(accessKey: String): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(UNSPLASH_BASE_URL)
                 .addConverterFactory(JacksonConverterFactory.create(getObjectMapper()))
-                .client(createHttpClient())
+                .client(createHttpClient(accessKey))
                 .build()
     }
 
-    private fun createHttpClient(): OkHttpClient {
+    private fun createHttpClient(accessKey: String): OkHttpClient {
         return OkHttpClient.Builder()
                 .callTimeout(20, TimeUnit.SECONDS)
-                .addNetworkInterceptor(createHeaderInterceptor())
+                .addNetworkInterceptor(createHeaderInterceptor(accessKey))
                 .build()
     }
 
-    private fun createHeaderInterceptor(): Interceptor {
+    private fun createHeaderInterceptor(accessKey: String): Interceptor {
         return Interceptor { chain ->
             val request = chain.request().newBuilder()
                     .addHeader("Content-Type", "application/json")
                     .addHeader("Accept-Version", "v1")
-                    .addHeader("Authorization", "Client-ID $UNSPLASH_ACCESS_KEY")
+                    .addHeader("Authorization", "Client-ID $accessKey")
                     .build()
             chain.proceed(request)
         }

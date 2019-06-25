@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.android.apps.muzei.api.UserCommand
 import com.google.android.apps.muzei.api.provider.Artwork
 import com.google.android.apps.muzei.api.provider.MuzeiArtProvider
+import io.github.muzplash.BuildConfig
 import io.github.muzplash.R
 import io.github.muzplash.getGMapsUri
 import io.github.muzplash.isGeolocated
@@ -14,7 +15,7 @@ import java.io.InputStream
 
 class UnsplashArtProvider(val unsplashService: UnsplashService) : MuzeiArtProvider() {
 
-    constructor(): this(UnsplashServiceImpl())
+    constructor(): this(UnsplashServiceImpl(BuildConfig.UNSPLASH_ACCESS_KEY))
 
     companion object {
         private const val USER_COMMAND_ID_GMAPS = 1

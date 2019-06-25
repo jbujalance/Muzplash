@@ -13,6 +13,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        all {
+            // The UNSPLASH_ACCESS_KEY is defined in the gradle.properties
+            buildConfigField "String", "UNSPLASH_ACCESS_KEY", UNSPLASH_ACCESS_KEY
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

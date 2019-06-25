@@ -133,3 +133,10 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.gitignore.io/api/androidstudio
+
+########################
+#### Custom ignores ####
+########################
+
+# Igonre gradle properties as it contains access keys. This file is to be maintained by each user.
+gradle.properties

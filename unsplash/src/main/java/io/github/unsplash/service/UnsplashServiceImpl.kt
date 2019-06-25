@@ -4,7 +4,7 @@ import io.github.unsplash.model.UnsplashPhoto
 
 class UnsplashServiceImpl(private val api: UnsplashAPI, private val executor: CallExecutor): UnsplashService {
 
-    constructor(): this(UnsplashAPIFactory.createUnsplashAPI(), CallExecutor())
+    constructor(accessKey: String): this(UnsplashAPIFactory.createUnsplashAPI(accessKey), CallExecutor())
 
     override fun getRandomPhotos(query: String, count: Int): Collection<UnsplashPhoto> {
         return executor.execute(api.getRandomPhotos(query, count))
