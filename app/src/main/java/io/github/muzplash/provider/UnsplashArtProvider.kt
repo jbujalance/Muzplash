@@ -13,11 +13,21 @@ import io.github.unsplash.service.UnsplashService
 import io.github.unsplash.service.UnsplashServiceImpl
 import java.io.InputStream
 
+/**
+ * This is the main class of the Muzplash application.
+ * This MuzeiArtProvider is the bridge between Muzei and Muzplash.
+ * When Muzei wants to load new images, it asks this provider to load them
+ * @property unsplashService The Unsplash service that will communicate with Unsplash to get the images.
+ */
 class UnsplashArtProvider(val unsplashService: UnsplashService) : MuzeiArtProvider() {
 
+    /**
+     * Default constructor used by the ANdroid system to instantiate the provider.
+     */
     constructor(): this(UnsplashServiceImpl(BuildConfig.UNSPLASH_ACCESS_KEY))
 
     companion object {
+        /** The Id of the user command that allows to open the image in Google Maps. */
         private const val USER_COMMAND_ID_GMAPS = 1
     }
 

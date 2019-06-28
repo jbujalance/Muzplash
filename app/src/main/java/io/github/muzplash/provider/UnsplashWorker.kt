@@ -6,7 +6,9 @@ import com.google.android.apps.muzei.api.provider.ProviderContract
 import io.github.muzplash.toArtwork
 
 /**
- * Worker responsible for downloading a batch of images from the Unsplash backend.
+ * Worker responsible for downloading a batch of images from the Unsplash backend and notifying the UnsplashArtProvider that new images are available.
+ * @property context the application context
+ * @property parameters the worker parameters
  */
 class UnsplashWorker(private val context: Context, parameters: WorkerParameters) : Worker(context, parameters) {
     // TODO manage dependency injection in worker
@@ -20,7 +22,7 @@ class UnsplashWorker(private val context: Context, parameters: WorkerParameters)
 
     companion object {
         /**
-         * Enqueues a UnsplashWorker request to the WorkManager. The request is constrained by a not-roaming network connection.
+         * Enqueues an UnsplashWorker request to the WorkManager. The request is constrained by a not-roaming network connection.
          */
         internal fun enqueueWork() {
             val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.NOT_ROAMING).build()

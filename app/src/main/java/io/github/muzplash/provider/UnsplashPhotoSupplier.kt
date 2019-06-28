@@ -11,6 +11,11 @@ import java.util.function.Supplier
 import java.util.stream.Collectors
 import java.util.stream.Stream
 
+/**
+ * A Supplier of Unsplash photos, backed by an Unsplash service
+ * @property settings The Muzei settings holder that will impose how the photos are loaded from Unsplash.
+ * @property unsplashService The Unsplash service that actually gets in touch with the Unsplash endpoints to laod the imaages
+ */
 class UnsplashPhotoSupplier(private val settings: MuzplashSettings, private val unsplashService: UnsplashService): Supplier<Collection<UnsplashPhoto>> {
 
     constructor(context: Context, unsplashService: UnsplashService): this(MuzplashSettingsImpl(context), unsplashService)
@@ -30,6 +35,11 @@ class UnsplashPhotoSupplier(private val settings: MuzplashSettings, private val 
         return unsplashService.getRandomPhotos(settings.getSearchQuery(), settings.getLoadBatchSize())
     }
 
+    /**
+     * Builds a Stream backed by the given supplier.
+     * @param supplier An Unsplash photo supplier that will be accessed from the built Stream.
+     * @return A Stream of Unsplash photos backed by the given supplier.
+     */
     private fun getStream(supplier: () -> Collection<UnsplashPhoto>): Stream<UnsplashPhoto> {
         return Stream.generate(supplier).flatMap { collection -> collection.stream() }
     }
