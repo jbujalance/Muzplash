@@ -8,7 +8,6 @@ import io.github.muzplash.toArtwork
 /**
  * Worker responsible for downloading a batch of images from the Unsplash backend and notifying the UnsplashArtProvider that new images are available.
  * @property context the application context
- * @property parameters the worker parameters
  */
 class UnsplashWorker(private val context: Context, parameters: WorkerParameters) : Worker(context, parameters) {
     // TODO manage dependency injection in worker
