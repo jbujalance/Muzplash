@@ -25,9 +25,9 @@ interface MuzplashSettings {
 
     /**
      * @return number of images to load from Unsplash before filtering them on geolocation.
-     * This batch size is based in a totally arbitrary estimation that half of the images in Unsplash are geolocated.
+     * This batch size is based in a totally arbitrary estimation that a third of the images in Unsplash are geolocated.
      */
     fun getLoadBatchSizeForGeolocationFiltering(): Int {
-        return getLoadBatchSize() * 2
+        return getLoadBatchSize() * 3
     }
 }

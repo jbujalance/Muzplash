@@ -2,6 +2,7 @@ package io.github.muzplash.provider
 
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import com.google.android.apps.muzei.api.UserCommand
 import com.google.android.apps.muzei.api.provider.Artwork
 import com.google.android.apps.muzei.api.provider.MuzeiArtProvider
@@ -57,9 +58,15 @@ class UnsplashArtProvider(val unsplashService: UnsplashService) : MuzeiArtProvid
     override fun onCommand(artwork: Artwork, id: Int) {
         when(id) {
             USER_COMMAND_ID_GMAPS -> {
-                val mapsIntent = Intent(Intent.ACTION_VIEW, artwork.getGMapsUri()).apply { `package` = "com.google.android.apps.maps" }
+                val mapsIntent = Intent(Intent.ACTION_VIEW, artwork.getGMapsUri()).apply {
+                    `package` = "com.google.android.apps.maps"
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                }
                 if (mapsIntent.resolveActivity(context?.packageManager!!) != null) {
                     context?.startActivity(mapsIntent)
+                } else {
+                    Toast.makeText(context, "Google Maps doesn't seem to be installed", Toast.LENGTH_SHORT).show()
+                    Log.w(javaClass.simpleName, "The following intent failed to launch Google Maps: $mapsIntent")
                 }
             }
         }
