@@ -18,10 +18,10 @@ _Muzplash_ provides images from [Unsplash](https://unsplash.com/), the popular p
 
 ## Screenshots
 <div>
-    <img src="art/Screenshot_20190619-080340.png" width="280" alt="screenshot_1">
-    <img src="art/Screenshot_20190622-002528.png" width="280" alt="screenshot_3">
-    <img src="art/Screenshot_20190622-154701.png" width="280" alt="screenshot_2">
-    <img src="art/Screenshot_20190623-203359.png" width="280" alt="screenshot_4">
+    <img src="art/raw/Screenshot_20190624-181534.png" width="280" alt="screenshot_1">
+    <img src="art/raw/Screenshot_20190624-222949.png" width="280" alt="screenshot_3">
+    <img src="art/raw/Screenshot_20190622-154701.png" width="280" alt="screenshot_2">
+    <img src="art/raw/Screenshot_20190623-203359.png" width="280" alt="screenshot_4">
 </div>
 
 ## Build configuration

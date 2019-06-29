@@ -18,7 +18,8 @@ android {
             buildConfigField "String", "UNSPLASH_ACCESS_KEY", UNSPLASH_ACCESS_KEY
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

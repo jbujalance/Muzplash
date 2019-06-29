@@ -140,3 +140,5 @@ fabric.properties
 
 # Igonre gradle properties as it contains access keys. This file is to be maintained by each user.
 gradle.properties
+# Release artifact
+/release
