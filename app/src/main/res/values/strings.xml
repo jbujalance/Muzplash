@@ -1,13 +1,24 @@
 <resources>
     <string name="app_name">Muzplash</string>
+
+    <!-- Provider strings -->
     <string name="provider_name">Muzplash</string>
     <string name="provider_description">High quality images from Unsplash</string>
     <string name="provider_command_gmaps">Open location</string>
+
+    <!-- Settings strings -->
     <string name="settings_query_title">Search images</string>
     <string name="settings_query_summary">The provided images will match the given query. For example \"landscape\".</string>
     <string name="settings_geolocated_title">Geolocated photos</string>
     <string name="settings_geolocated_summary">Provide only geolocated photos</string>
+    <string name="settings_featured_title">Featured</string>
+    <string name="settings_featured_summary">Provide only Unsplash featured photos</string>
     <string name="settings_batch_size_title">Load batch size</string>
     <string name="settings_batch_size_summary">The number of images that Muzplash will retrieve from Unsplash every time that Muzei asks for new images.</string>
+    <string name="settings_category_photo_search">Photo search</string>
+    <string name="settings_category_photo_filtering">Photo filtering</string>
+    <string name="settings_category_advanced">Advanced</string>
+
+    <!-- Settings activity -->
     <string name="activity_settings_title">Muzplash Settings</string>
 </resources>

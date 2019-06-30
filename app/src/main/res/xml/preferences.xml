@@ -2,27 +2,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditTextPreference
-        android:key="query"
-        android:title="@string/settings_query_title"
-        android:summary="@string/settings_query_summary"
-        android:defaultValue="nature wallpaper"
-        android:inputType="text"
-        app:iconSpaceReserved="false"/>
+    <PreferenceCategory
+        app:key="category_search"
+        app:title="@string/settings_category_photo_search"
+        app:iconSpaceReserved="false">
 
-    <SwitchPreference
-        android:key="geolocated"
-        android:title="@string/settings_geolocated_title"
-        android:summary="@string/settings_geolocated_summary"
-        android:defaultValue="false"
-        app:iconSpaceReserved="false"/>
+        <EditTextPreference
+            android:key="query"
+            android:title="@string/settings_query_title"
+            android:summary="@string/settings_query_summary"
+            android:defaultValue="nature wallpaper"
+            android:inputType="text"
+            app:iconSpaceReserved="false"/>
 
-    <io.github.muzplash.ui.settings.NumberPickerPreference
-        android:key="batch_size"
-        android:title="@string/settings_batch_size_title"
-        android:summary="@string/settings_batch_size_summary"
-        app:minValue="1"
-        app:maxValue="6"
-        app:iconSpaceReserved="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="category_filtering"
+        app:title="@string/settings_category_photo_filtering"
+        app:iconSpaceReserved="false">
+
+            <SwitchPreference
+                android:key="geolocated"
+                android:title="@string/settings_geolocated_title"
+                android:summary="@string/settings_geolocated_summary"
+                android:defaultValue="false"
+                app:iconSpaceReserved="false"/>
+
+            <SwitchPreference
+                android:key="featured"
+                android:title="@string/settings_featured_title"
+                android:summary="@string/settings_featured_summary"
+                android:defaultValue="false"
+                app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="category_advanced"
+        app:title="@string/settings_category_advanced"
+        app:iconSpaceReserved="false">
+
+        <io.github.muzplash.ui.settings.NumberPickerPreference
+            android:key="batch_size"
+            android:title="@string/settings_batch_size_title"
+            android:summary="@string/settings_batch_size_summary"
+            app:minValue="1"
+            app:maxValue="6"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
 
 </androidx.preference.PreferenceScreen>
