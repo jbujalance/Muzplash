@@ -19,6 +19,11 @@ interface MuzplashSettings {
     fun isGeolocatedFiltered(): Boolean
 
     /**
+     * @return `true` if the provided photos should all be featured, `false` otherwise.
+     */
+    fun isFeaturedFiltered() : Boolean
+
+    /**
      * @return the number of images to load from Unsplash each time Muzei asks for new images.
      */
     fun getLoadBatchSize(): Int

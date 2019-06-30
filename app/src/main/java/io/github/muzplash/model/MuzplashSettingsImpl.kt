@@ -22,6 +22,8 @@ class MuzplashSettingsImpl(private val preferences: SharedPreferences) : Muzplas
         private const val SETTINGS_DEFAULT_QUERY = "nature wallpaper"
         /** The key in the shared preferences that holds the geolocation filtering flag value. */
         private const val SETTINGS_KEY_GEOLOCATED = "geolocated"
+        /** The key in the shared preferences that holds the featured filtering flag value. */
+        private const val SETTINGS_KEY_FEATURED = "featured"
         /** The key in the shared preferences that holds the load batch size value. */
         private const val SETTINGS_KEY_BATCH_SIZE = "batch_size"
         /** The default value for the load batch size in case there is not any registered value in the shared preferences. */
@@ -34,6 +36,10 @@ class MuzplashSettingsImpl(private val preferences: SharedPreferences) : Muzplas
 
     override fun isGeolocatedFiltered(): Boolean {
         return preferences.getBoolean(SETTINGS_KEY_GEOLOCATED, false)
+    }
+
+    override fun isFeaturedFiltered(): Boolean {
+        return preferences.getBoolean(SETTINGS_KEY_FEATURED, false)
     }
 
     override fun getLoadBatchSize(): Int {
