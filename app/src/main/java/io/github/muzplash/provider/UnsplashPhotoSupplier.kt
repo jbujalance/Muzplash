@@ -26,13 +26,13 @@ class UnsplashPhotoSupplier(private val settings: MuzplashSettings, private val 
 
     override fun get(): Collection<UnsplashPhoto> {
         if (settings.isGeolocatedFiltered()) {
-            return getStream { unsplashService.getRandomPhotos(settings.getSearchQuery(), settings.getLoadBatchSizeForGeolocationFiltering()) }
-                    .filter{it.isGeolocated()}
+            return getStream { unsplashService.getRandomPhotos(settings.getSearchQuery(), settings.isFeaturedFiltered(), settings.getLoadBatchSizeForGeolocationFiltering()) }
+                    .filter{ it.isGeolocated() }
                     .limit(settings.getLoadBatchSize().toLong())
                     .collect(Collectors.toList())
         }
         // TODO catch service exceptions ? Maybe not, as this code runs in a Worker, so kind of useless
-        return unsplashService.getRandomPhotos(settings.getSearchQuery(), settings.getLoadBatchSize())
+        return unsplashService.getRandomPhotos(settings.getSearchQuery(), settings.isFeaturedFiltered(), settings.getLoadBatchSize())
     }
 
     /**
