@@ -24,15 +24,36 @@ interface MuzplashSettings {
     fun isFeaturedFiltered() : Boolean
 
     /**
-     * @return the number of images to load from Unsplash each time Muzei asks for new images.
+     * @return the configured number of images to load from Unsplash each time Muzei asks for new images.
      */
     fun getLoadBatchSize(): Int
 
     /**
-     * @return number of images to load from Unsplash before filtering them on geolocation.
-     * This batch size is based in a totally arbitrary estimation that a third of the images in Unsplash are geolocated.
+     * @return The actual number of photos to retrieve from the Unsplash API.
+     * This number depends on whether the photos need to be manually filtered or not.
+     * When a manual filtering is needed, we retrieve more images from the Unsplash API as some of them will be lost.
+     * The objective is that, even after dropping the invalid photos, we are able to retain `loadBatchSize` photos after filtering with just one request.
      */
-    fun getLoadBatchSizeForGeolocationFiltering(): Int {
+    fun getRequestPhotoCount(): Int {
+        return if (isManualFilteringNeeded()) getLoadBatchSizeForManualFiltering() else getLoadBatchSize()
+    }
+
+    /**
+     * A manual filter is a filter that is not supported by the Unsplash API.
+     * For example, the featured filter is supported by the Unsplash API, but the geolocation or likes filters are not.
+     * @return number of images to load from Unsplash before filtering them manually.
+     * This batch size is based in a totally arbitrary estimation.
+     */
+    private fun getLoadBatchSizeForManualFiltering(): Int {
         return getLoadBatchSize() * 3
+    }
+
+    /**
+     * A manual filter is a filter that is not supported by the Unsplash API.
+     * For example, the featured or collection filter is supported by the Unsplash API, but the geolocation or likes filters are not.
+     * @return `true` if the photos will need to be manually filtered to satisfy the settings, `false` otherwise.
+     */
+    private fun isManualFilteringNeeded(): Boolean {
+        return isGeolocatedFiltered()
     }
 }
