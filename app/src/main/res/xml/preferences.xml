@@ -11,7 +11,7 @@
             android:key="query"
             android:title="@string/settings_query_title"
             android:summary="@string/settings_query_summary"
-            android:defaultValue="nature wallpaper"
+            android:defaultValue="wallpaper"
             android:inputType="text"
             app:iconSpaceReserved="false"/>
 

@@ -19,7 +19,7 @@ class MuzplashSettingsImpl(private val preferences: SharedPreferences) : Muzplas
         /** The key in the shared preferences that holds the search query value. */
         private const val SETTINGS_KEY_QUERY = "query"
         /** The default value for the search query in case there is not any registered value in the shared preferences. */
-        private const val SETTINGS_DEFAULT_QUERY = "nature wallpaper"
+        private const val SETTINGS_DEFAULT_QUERY = "wallpaper"
         /** The key in the shared preferences that holds the geolocation filtering flag value. */
         private const val SETTINGS_KEY_GEOLOCATED = "geolocated"
         /** The key in the shared preferences that holds the featured filtering flag value. */
