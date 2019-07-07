@@ -1,8 +1,8 @@
 # Muzplash - Unsplash plugin for Muzei
 
-<div>
-    <img src="app/src/main/ic_launcher-web.png" width="120" alt="muzplash_icon">
-</div>
+[<img src="app/src/main/ic_launcher-web.png" width="120" alt="muzplash_icon">](app/src/main/ic_launcher-web.png)
+[<img alt="Get it on Google Play" height="90" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png">](https://play.google.com/store/apps/details?id=io.github.muzplash)
+
 
 _Muzplash_ is a plugin for the Android live wallpaper app [Muzei](http://get.muzei.co/), by [Roman Nurik](https://github.com/romannurik) and [Ian Lake](https://github.com/ianhanniballake).<br>
 _Muzplash_ provides images from [Unsplash](https://unsplash.com/), the popular photographers community.
@@ -21,7 +21,7 @@ _Muzplash_ provides images from [Unsplash](https://unsplash.com/), the popular p
     <img src="art/raw/Screenshot_20190630-191121.png" width="280" alt="screenshot_1">
     <img src="art/raw/Screenshot_20190624-222949.png" width="280" alt="screenshot_3">
     <img src="art/raw/Screenshot_20190622-154701.png" width="280" alt="screenshot_2">
-    <img src="art/raw/Screenshot_20190630-192249.png" width="280" alt="screenshot_4">
+    <img src="art/raw/Screenshot_20190707-194610.png" width="280" alt="screenshot_4">
 </div>
 
 ## Build configuration
