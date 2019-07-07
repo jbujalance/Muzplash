@@ -8,8 +8,8 @@ android {
         applicationId "io.github.muzplash"
         minSdkVersion 25
         targetSdkVersion 28
-        versionCode 5
-        versionName "0.2.0-SNAPSHOT"
+        versionCode 7
+        versionName "0.3.1-SNAPSHOT"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
