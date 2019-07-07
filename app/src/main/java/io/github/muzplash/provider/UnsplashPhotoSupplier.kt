@@ -1,9 +1,6 @@
 package io.github.muzplash.provider
 
-import android.content.Context
-import io.github.muzplash.BuildConfig
 import io.github.muzplash.model.MuzplashSettings
-import io.github.muzplash.model.MuzplashSettingsImpl
 import io.github.muzplash.provider.filtering.FilterChain
 import io.github.muzplash.provider.filtering.GeolocationFilter
 import io.github.unsplash.model.UnsplashPhoto
@@ -19,9 +16,7 @@ import java.util.stream.Collectors
  */
 class UnsplashPhotoSupplier(private val settings: MuzplashSettings, private val unsplashService: UnsplashService): Supplier<Collection<UnsplashPhoto>> {
 
-    constructor(context: Context, unsplashService: UnsplashService): this(MuzplashSettingsImpl(context), unsplashService)
-    constructor(context: Context, unsplashAccessKey: String): this(context, UnsplashServiceImpl(unsplashAccessKey))
-    constructor(context: Context): this(context, BuildConfig.UNSPLASH_ACCESS_KEY)
+    constructor(settings: MuzplashSettings): this(settings, UnsplashServiceImpl(settings.getAccessKey()))
 
     private val filterChain: FilterChain<UnsplashPhoto> by lazy {
         // We only have a manual filter right now, but we could have plenty of them defined here

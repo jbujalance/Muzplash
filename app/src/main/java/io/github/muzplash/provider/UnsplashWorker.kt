@@ -3,6 +3,7 @@ package io.github.muzplash.provider
 import android.content.Context
 import androidx.work.*
 import com.google.android.apps.muzei.api.provider.ProviderContract
+import io.github.muzplash.model.MuzplashSettingsImpl
 import io.github.muzplash.toArtwork
 
 /**
@@ -13,7 +14,7 @@ class UnsplashWorker(private val context: Context, parameters: WorkerParameters)
     // TODO manage dependency injection in worker
 
     override fun doWork(): Result {
-        val photos = UnsplashPhotoSupplier(context).get()
+        val photos = UnsplashPhotoSupplier(MuzplashSettingsImpl(context)).get()
         val providerClient = ProviderContract.getProviderClient(applicationContext, UnsplashArtProvider::class.java)
         providerClient.addArtwork(photos.map { it.toArtwork() })
         return Result.success()
