@@ -33,7 +33,7 @@
                 android:key="featured"
                 android:title="@string/settings_featured_title"
                 android:summary="@string/settings_featured_summary"
-                android:defaultValue="false"
+                android:defaultValue="true"
                 app:iconSpaceReserved="false"/>
 
     </PreferenceCategory>
@@ -49,6 +49,13 @@
             android:summary="@string/settings_batch_size_summary"
             app:minValue="1"
             app:maxValue="6"
+            app:iconSpaceReserved="false"/>
+
+        <EditTextPreference
+            android:key="access_key"
+            android:title="@string/settings_access_key_title"
+            android:summary="@string/settings_access_key_summary"
+            android:inputType="text"
             app:iconSpaceReserved="false"/>
 
     </PreferenceCategory>

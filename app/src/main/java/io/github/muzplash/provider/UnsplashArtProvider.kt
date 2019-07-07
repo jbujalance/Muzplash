@@ -6,10 +6,10 @@ import android.widget.Toast
 import com.google.android.apps.muzei.api.UserCommand
 import com.google.android.apps.muzei.api.provider.Artwork
 import com.google.android.apps.muzei.api.provider.MuzeiArtProvider
-import io.github.muzplash.BuildConfig
 import io.github.muzplash.R
 import io.github.muzplash.getGMapsUri
 import io.github.muzplash.isGeolocated
+import io.github.muzplash.model.MuzplashSettingsImpl
 import io.github.unsplash.service.UnsplashService
 import io.github.unsplash.service.UnsplashServiceImpl
 import java.io.InputStream
@@ -17,15 +17,16 @@ import java.io.InputStream
 /**
  * This is the main class of the Muzplash application.
  * This MuzeiArtProvider is the bridge between Muzei and Muzplash.
- * When Muzei wants to load new images, it asks this provider to load them
- * @property unsplashService The Unsplash service that will communicate with Unsplash to get the images.
+ * When Muzei wants to load new images, it asks this provider to load them.
  */
-class UnsplashArtProvider(val unsplashService: UnsplashService) : MuzeiArtProvider() {
+class UnsplashArtProvider : MuzeiArtProvider() {
 
     /**
-     * Default constructor used by the ANdroid system to instantiate the provider.
+     * The Unsplash service that will communicate with Unsplash to get the images.
      */
-    constructor(): this(UnsplashServiceImpl(BuildConfig.UNSPLASH_ACCESS_KEY))
+    private val unsplashService : UnsplashService by lazy {
+        UnsplashServiceImpl(MuzplashSettingsImpl(context!!).getAccessKey())
+    }
 
     companion object {
         /** The Id of the user command that allows to open the image in Google Maps. */

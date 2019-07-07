@@ -3,9 +3,10 @@ package io.github.muzplash.model
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import io.github.muzplash.BuildConfig
 
 /**
- * Muzplash settings holder that dedlegates the configuration persistence in a SharedPreference instance.
+ * Muzplash settings holder that delegates the configuration persistence on a SharedPreference instance.
  * @property preferences The instance of SharedPreferences that actually has access to the app preferences.
  */
 class MuzplashSettingsImpl(private val preferences: SharedPreferences) : MuzplashSettings {
@@ -28,6 +29,8 @@ class MuzplashSettingsImpl(private val preferences: SharedPreferences) : Muzplas
         private const val SETTINGS_KEY_BATCH_SIZE = "batch_size"
         /** The default value for the load batch size in case there is not any registered value in the shared preferences. */
         private const val SETTINGS_DEFAULT_BATCH_SIZE = 3
+        /** The key in the shared preferences that holds the custom Unsplash API access key value. */
+        private const val SETTINGS_KEY_ACCESS_KEY = "access_key"
     }
 
     override fun getSearchQuery(): String {
@@ -39,10 +42,14 @@ class MuzplashSettingsImpl(private val preferences: SharedPreferences) : Muzplas
     }
 
     override fun isFeaturedFiltered(): Boolean {
-        return preferences.getBoolean(SETTINGS_KEY_FEATURED, false)
+        return preferences.getBoolean(SETTINGS_KEY_FEATURED, true)
     }
 
     override fun getLoadBatchSize(): Int {
         return preferences.getInt(SETTINGS_KEY_BATCH_SIZE, SETTINGS_DEFAULT_BATCH_SIZE)
+    }
+
+    override fun getAccessKey(): String {
+        return preferences.getString(SETTINGS_KEY_ACCESS_KEY, BuildConfig.UNSPLASH_ACCESS_KEY)!!  //Not nullable as fallbacks to default
     }
 }

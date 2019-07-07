@@ -18,6 +18,8 @@
     <string name="settings_category_photo_search">Photo search</string>
     <string name="settings_category_photo_filtering">Photo filtering</string>
     <string name="settings_category_advanced">Advanced</string>
+    <string name="settings_access_key_title">Unsplash access key</string>
+    <string name="settings_access_key_summary">Muzplash has not been given production rates by Unsplash. Thus, if you want Muzplash to correctly work, you will need to provide your own API access key. Visit <a href="https://unsplash.com/developers">Unsplash developers</a> to create your own key.</string>
 
     <!-- Settings activity -->
     <string name="activity_settings_title">Muzplash Settings</string>

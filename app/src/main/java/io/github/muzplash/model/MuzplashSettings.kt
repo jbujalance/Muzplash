@@ -39,6 +39,11 @@ interface MuzplashSettings {
     }
 
     /**
+     * @return The custom Unsplash API access key if present, or the default key if none has been provided by the user.
+     */
+    fun getAccessKey(): String
+
+    /**
      * A manual filter is a filter that is not supported by the Unsplash API.
      * For example, the featured filter is supported by the Unsplash API, but the geolocation or likes filters are not.
      * @return number of images to load from Unsplash before filtering them manually.
