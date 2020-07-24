@@ -1,9 +1,11 @@
 package io.github.muzplash.provider
 
+import android.app.PendingIntent
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import com.google.android.apps.muzei.api.UserCommand
+import androidx.core.app.RemoteActionCompat
+import androidx.core.graphics.drawable.IconCompat
 import com.google.android.apps.muzei.api.provider.Artwork
 import com.google.android.apps.muzei.api.provider.MuzeiArtProvider
 import io.github.muzplash.R
@@ -50,12 +52,17 @@ class UnsplashArtProvider : MuzeiArtProvider() {
         }
     }
 
-    override fun getCommands(artwork: Artwork): MutableList<UserCommand> {
-        val commands = super.getCommands(artwork)
-        if (artwork.isGeolocated()) commands.add(UserCommand(USER_COMMAND_ID_GMAPS, context?.getString(R.string.provider_command_gmaps)))
-        return commands
+    /* kept for backward compatibility with Muzei 3.3 */
+    @Suppress("OverridingDeprecatedMember", "DEPRECATION")
+    override fun getCommands(artwork: Artwork) = if (artwork.isGeolocated()) {
+        listOf(com.google.android.apps.muzei.api.UserCommand(USER_COMMAND_ID_GMAPS,
+                context?.getString(R.string.provider_command_gmaps)))
+    } else {
+        emptyList()
     }
 
+    /* kept for backward compatibility with Muzei 3.3 */
+    @Suppress("OverridingDeprecatedMember")
     override fun onCommand(artwork: Artwork, id: Int) {
         when(id) {
             USER_COMMAND_ID_GMAPS -> {
@@ -71,6 +78,20 @@ class UnsplashArtProvider : MuzeiArtProvider() {
                 }
             }
         }
+    }
+
+    /* Used by Muzei 3.4+ */
+    override fun getCommandActions(artwork: Artwork)= if (artwork.isGeolocated()) {
+        listOf(RemoteActionCompat(
+                IconCompat.createWithResource(context, R.drawable.muzei_launch_command),
+                context?.getString(R.string.provider_command_gmaps) ?: "",
+                context?.getString(R.string.provider_command_gmaps) ?: "",
+                PendingIntent.getActivity(context, 0,
+                        Intent(Intent.ACTION_VIEW, artwork.getGMapsUri()), 0)).apply {
+            setShouldShowIcon(false)
+        })
+    } else {
+        emptyList()
     }
 
     // TODO override useful methods like getCommands and getDescription

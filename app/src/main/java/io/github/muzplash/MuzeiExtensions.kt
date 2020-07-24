@@ -11,15 +11,15 @@ import io.github.unsplash.model.UnsplashPhoto
  */
 fun UnsplashPhoto.toArtwork(): Artwork {
     val photo = this
-    return Artwork().apply {
-        token = photo.id
-        title = photo.getDescriptionSummary() ?: photo.altDescription ?: photo.getDefaultDescription()
-        byline = photo.location?.title ?: photo.getFormattedCreationDate()
-        attribution = photo.user.getAttribution()
-        persistentUri = photo.urls.full.toUri()
-        webUri = photo.links.getUtmHtml("Muzplash").toUri()
+    return Artwork(
+        token = photo.id,
+        title = photo.getDescriptionSummary() ?: photo.altDescription ?: photo.getDefaultDescription(),
+        byline = photo.location?.title ?: photo.getFormattedCreationDate(),
+        attribution = photo.user.getAttribution(),
+        persistentUri = photo.urls.full.toUri(),
+        webUri = photo.links.getUtmHtml("Muzplash").toUri(),
         metadata = photo.location?.getGMapsUriString()
-    }
+    )
 }
 
 /**
