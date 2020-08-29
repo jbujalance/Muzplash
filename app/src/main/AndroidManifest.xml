@@ -35,6 +35,16 @@
                 android:name="settingsActivity"
                 android:value="io.github.muzplash.ui.settings.SettingsActivity" />
         </provider>
+
+        <provider android:name="com.google.android.apps.muzei.api.provider.MuzeiArtDocumentsProvider"
+            android:authorities="io.github.muzplash.unsplashartprovider.documents"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
     </application>
 
 </manifest>

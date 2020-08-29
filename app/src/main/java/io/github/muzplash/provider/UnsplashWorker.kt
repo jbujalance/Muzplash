@@ -15,7 +15,7 @@ class UnsplashWorker(private val context: Context, parameters: WorkerParameters)
 
     override fun doWork(): Result {
         val photos = UnsplashPhotoSupplier(MuzplashSettingsImpl(context)).get()
-        val providerClient = ProviderContract.getProviderClient(applicationContext, UnsplashArtProvider::class.java)
+        val providerClient = ProviderContract.getProviderClient<UnsplashArtProvider>(applicationContext)
         providerClient.addArtwork(photos.map { it.toArtwork() })
         return Result.success()
     }
